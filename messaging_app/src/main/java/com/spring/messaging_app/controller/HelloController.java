@@ -5,6 +5,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PathVariable;
+import com.spring.messaging_app.dto.User;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/hello")
@@ -26,5 +28,11 @@ public class HelloController {
     @GetMapping("/param/{name}")
     public String sayHelloWithPathVariable(@PathVariable String name) {
         return "Hello " + name + " from BridgeLabz";
+    }
+
+    // UC4: Accepting firstName and lastName from request body
+    @PostMapping("/post")
+    public String sayHelloWithPost(@RequestBody User user) {
+        return "Hello " + user.getFirstName() + " " + user.getLastName() + " from BridgeLabz";
     }
 }
